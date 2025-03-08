@@ -43,6 +43,13 @@ var sumar = function (num1, num2) {
 };
 var resultado = sumar(5, 8);
 console.log(resultado.resultado);
+var paises = function (_a) {
+    var codigoPais = _a.codigoPais, codigoTelefono = _a.codigoTelefono;
+    return {
+        cp: codigoPais,
+        ct: codigoTelefono,
+    };
+};
 // Definición de un enum para días de la semana
 var DiasSemana;
 (function (DiasSemana) {
@@ -59,12 +66,6 @@ var Estados;
     Estados[Estados["Activo"] = 1] = "Activo";
     Estados[Estados["Inactivo"] = 0] = "Inactivo";
 })(Estados || (Estados = {}));
-var ProductoTipo;
-(function (ProductoTipo) {
-    ProductoTipo[ProductoTipo["Tickete"] = 1] = "Tickete";
-    ProductoTipo[ProductoTipo["Suscripcion"] = 2] = "Suscripcion";
-    ProductoTipo[ProductoTipo["Membresia"] = 3] = "Membresia";
-})(ProductoTipo || (ProductoTipo = {}));
 // Definición de un enum con valores de cadena (string enums)
 var Colores;
 (function (Colores) {
@@ -72,9 +73,17 @@ var Colores;
     Colores["Azul"] = "azul";
     Colores["Rojo"] = "rojo";
 })(Colores || (Colores = {}));
-console.log(DiasSemana.Lunes);
-console.log(Estados.Activo);
+var ProductoTipo;
+(function (ProductoTipo) {
+    ProductoTipo[ProductoTipo["Tickete"] = 1] = "Tickete";
+    ProductoTipo[ProductoTipo["Suscripcion"] = 2] = "Suscripcion";
+    ProductoTipo[ProductoTipo["Membresia"] = 3] = "Membresia";
+})(ProductoTipo || (ProductoTipo = {}));
+console.log("Lunes: " + DiasSemana.Lunes);
+console.log("Estado activo: " + Estados.Activo);
+console.log("Estado inactivo: " + Estados.Inactivo);
 console.log(Colores.Amarillo);
+console.log(Colores.Azul);
 console.log("Tickete: " + ProductoTipo.Tickete);
 console.log("Suscripcion: " + ProductoTipo.Suscripcion);
 console.log("Membresia: " + ProductoTipo.Membresia);
@@ -89,3 +98,21 @@ var Person = /** @class */ (function () {
 }());
 var personaLucy = new Person("Lucy");
 personaLucy.greet();
+var personaOscar = new Person("Oscar J.");
+personaOscar.greet();
+var miNumero = undefined;
+var lucy = {
+    name: "Lucy",
+    age: 25,
+    address: "mi casa",
+};
+var ale = {
+    name: "Ale",
+    age: 15,
+};
+console.log(lucy.name + " " + lucy.age + " " + lucy.address);
+console.log("".concat(ale.name, " - ").concat(ale.age));
+var saludar = function (name, age) { return "Hola ".concat(name, " - ").concat(age); };
+var saludar2 = function (param1, param2) {
+    return "";
+};

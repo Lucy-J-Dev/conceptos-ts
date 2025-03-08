@@ -57,6 +57,13 @@ const sumar = (num1: number, num2: number): object => {
 const resultado = sumar(5, 8);
 console.log(resultado.resultado);
 
+const paises = ({ codigoPais, codigoTelefono }: { codigoPais: string; codigoTelefono: number }) => {
+  return {
+    cp: codigoPais,
+    ct: codigoTelefono,
+  };
+};
+
 // Definición de un enum para días de la semana
 enum DiasSemana {
   Lunes,
@@ -72,13 +79,6 @@ enum Estados {
   Activo = 1,
   Inactivo = 0,
 }
-
-enum ProductoTipo {
-  Tickete = 1,
-  Suscripcion,
-  Membresia,
-}
-
 // Definición de un enum con valores de cadena (string enums)
 enum Colores {
   Amarillo = "amarillo",
@@ -86,9 +86,17 @@ enum Colores {
   Rojo = "rojo",
 }
 
-console.log(DiasSemana.Lunes);
-console.log(Estados.Activo);
+enum ProductoTipo {
+  Tickete = 1,
+  Suscripcion,
+  Membresia,
+}
+
+console.log("Lunes: " + DiasSemana.Lunes);
+console.log("Estado activo: " + Estados.Activo);
+console.log("Estado inactivo: " + Estados.Inactivo);
 console.log(Colores.Amarillo);
+console.log(Colores.Azul);
 
 console.log("Tickete: " + ProductoTipo.Tickete);
 console.log("Suscripcion: " + ProductoTipo.Suscripcion);
@@ -109,27 +117,100 @@ class Person {
 const personaLucy = new Person("Lucy");
 personaLucy.greet();
 
-// Interface básica
-interface People {
-  name: string;
-  age: number;
-}
+const personaOscar = new Person("Oscar J.");
+personaOscar.greet();
 
-// Interface con propiedades opcionales
-interface Product {
+// Interface básica
+// interface People1 {
+//   name: string;
+//   age: number;
+//   address?: string;
+// }
+
+// const lucia: People1 = {
+//   name: "Lucia",
+//   age: 60,
+//   address: "su casa",
+// };
+
+// const ale: People1 = {
+//   name: "Ale",
+//   age: 15,
+// };
+
+// console.log(lucia.name + " " + lucia.age + " " + lucia.address);
+// console.log(ale.name + " " + ale.age);
+
+// // Interface con propiedades opcionales
+// interface Product {
+//   name: string;
+//   price: number;
+//   description?: string;
+// }
+
+// // Interface para funciones
+// interface Greet {
+//   (name: string, age: number): string;
+// }
+
+// // Interface para classes
+// interface People {
+//   name: string;
+//   age: number;
+//   greet(): void;
+// }
+
+// type básico
+type Numero = number | undefined;
+const miNumero: Numero = undefined;
+
+// type básico objeto literal
+type Person2 = {
+  name: string;
+  age: Numero;
+  address?: string;
+};
+
+const lucy: Person2 = {
+  name: "Lucy",
+  age: 25,
+  address: "mi casa",
+};
+
+const ale: Person2 = {
+  name: "Ale",
+  age: 15,
+};
+
+console.log(lucy.name + " " + lucy.age + " " + lucy.address);
+console.log(`${ale.name} - ${ale.age}`);
+
+// type con unión de tipos o combinación de tipos
+type Name = string | null;
+
+// type con propiedades opcionales (?)
+type Product = {
   name: string;
   price: number;
   description?: string;
-}
+};
 
-// Interface para funciones
-interface Greet {
+// type para funciones
+type Greet = {
   (name: string, age: number): string;
-}
+};
 
-// Interface para classes
-interface People {
+type Greet2 = (name: string, age: number) => string;
+
+const saludar: Greet = (name, age) => `Hola ${name} - ${age}`;
+
+const saludar2 = (param1: string, param2: number): string => {
+  return "";
+};
+
+// type para clases
+type People = {
   name: string;
   age: number;
   greet(): void;
-}
+};
